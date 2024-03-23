@@ -1,6 +1,6 @@
 #
 # This generates a TPO chart in ascii format
-#
+# TODO improve font, create letters or blocks rather than X, IB, POC, format opening TPO better, dynamic tick size, nicer x axis
 #
 import yfinance as yf
 import pandas as pd
