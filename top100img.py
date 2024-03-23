@@ -1,3 +1,7 @@
+#
+# This creates two tables top top gainers / losers from coingecko
+# TODO - format table better, nice lines, better text formatting, borders
+#
 from PIL import Image, ImageDraw, ImageFont
 import requests
 import pandas as pd
