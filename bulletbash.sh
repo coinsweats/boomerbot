@@ -1,5 +1,7 @@
 #!/bin/bash
-
+#
+# TODO clean up old pdfs in folder
+# 
 # Run your Python scripts in order
 python 4chart.py
 python top100img.py
