@@ -1,7 +1,7 @@
 #
 # This creates an image from the mpa.py TPO text file
 #
-# TODO - format image a bit better, rescale, improve font, create letters or blocks rather than X, IB, POC, format Open TPO better
+# TODO - format image a bit better, dates on table or below
 
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
