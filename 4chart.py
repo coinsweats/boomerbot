@@ -1,5 +1,6 @@
 #
-#  This script generates 4 90 day candlestick charts for BTCUSD / ETHUSD / ETHBTC / SPX
+#  This script generates 4 90 day candlestick charts for BTCUSD / ETHUSD / ETHBTC / SPX 
+#  The charts are collated into one image 
 #
 import mplfinance as mpf
 import pandas as pd
