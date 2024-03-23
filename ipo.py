@@ -1,3 +1,8 @@
+#
+# This creates an image from the mpa.py TPO text file
+#
+# TODO - format image a bit better, rescale, improve font, create letters or blocks rather than X, IB, POC, format Open TPO better
+
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 
