@@ -1,3 +1,7 @@
+#
+# This generates a TPO chart in ascii format
+#
+#
 import yfinance as yf
 import pandas as pd
 import numpy as np
