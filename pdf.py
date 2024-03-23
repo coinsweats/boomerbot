@@ -1,5 +1,5 @@
 #
-# The is the PDF builder for printing - it collates and formats images
+# The is the PDF builder for printing - it collates and formats images into a 2 page bulletin
 #
 from fpdf import FPDF
 
