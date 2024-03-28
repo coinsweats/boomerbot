@@ -6,6 +6,13 @@ from PIL import Image, ImageDraw, ImageFont
 import requests
 import pandas as pd
 
+# Replace 'arial.ttf' with the full path to your font file on your system
+FONT_PATH = 'arial.ttf'
+FONT_SIZE = 14
+LINE_COLOR = "#C0C0C0"  # A light shade of gray for monochrome appearance
+TEXT_COLOR = "black"    # Set all text to black
+BACKGROUND_COLOR = "white"
+
 def fetch_top_100_cryptos():
     url = "https://api.coingecko.com/api/v3/coins/markets"
     params = {
@@ -31,53 +38,63 @@ def find_gainers_losers(df, period="24h"):
     return top_gainers, top_losers
 
 def draw_enhanced_crypto_data(title, data_frame, file_name, percentage_change_key):
-    # ...
-    # Now, use `percentage_change_key` in the function body
-    # ...
+    # Define column positions and widths
+    column_details = {
+        "Token": {"x_offset": 10, "width": 180},
+        "Symbol": {"x_offset": 200, "width": 80},
+        "Price Change %": {"x_offset": 290, "width": 110}
+    }
 
-    # Create a new image with white background
-    width, height = 800, 400  # Adjust the height if necessary
-    background_color = 'white'
-    image = Image.new('RGB', (width, height), background_color)
+    # Load fonts
+    font = ImageFont.truetype(FONT_PATH, FONT_SIZE)
+
+    # Calculate image height dynamically based on the number of data rows
+    row_height = FONT_SIZE + 10
+    image_height = 60 + (len(data_frame) + 1) * row_height
+
+    # Create an image with white background
+    image = Image.new('RGB', (600, image_height), BACKGROUND_COLOR)
     draw = ImageDraw.Draw(image)
 
-    # Use the default font instead of truetype
-    title_font = ImageFont.load_default()
-    font = ImageFont.load_default()
+    # Draw the title at the top
+    title_font = ImageFont.truetype(FONT_PATH, FONT_SIZE + 4)
+    draw.text((10, 10), title, fill=TEXT_COLOR, font=title_font)
 
-    # Define colors
-    text_color = "black"
-    gain_color = "#008000"  # Green color for gains
-    loss_color = "#FF0000"  # Red color for losses
-    grid_color = "#DDDDDD"  # Light grey for grid lines
+    # Draw header background
+    header_height = 30
+    header_y_start = 50
+    header_y_end = header_y_start + header_height
+    draw.rectangle(
+        [(column_details["Token"]["x_offset"], header_y_start),
+         (column_details["Price Change %"]["x_offset"] + column_details["Price Change %"]["width"], header_y_end)],
+        fill=LINE_COLOR
+    )
 
-    # Draw title
-    title_x, title_y = 30, 20
-    draw.text((title_x, title_y), title, fill=text_color, font=title_font)
+    # Draw the header text for each column
+    for column, details in column_details.items():
+        draw.text(
+            (details["x_offset"], header_y_start + (header_height - FONT_SIZE) // 2),
+            column,
+            fill=TEXT_COLOR,
+            font=font
+        )
 
-    # Starting position for the data
-    y_offset = title_y + 20
-
-    # Define column starting positions
-    x_offset_id = title_x
-    x_offset_symbol = x_offset_id + 100
-    x_offset_change = x_offset_symbol + 100
-
-    # Draw header
-    draw.text((x_offset_id, y_offset), "ID", font=font, fill=text_color)
-    draw.text((x_offset_symbol, y_offset), "Symbol", font=font, fill=text_color)
-    draw.text((x_offset_change, y_offset), "Price Change %", font=font, fill=text_color)
-
-    y_offset += 20
-
-    # Draw data
+    # Draw each row of data
+    y_offset = header_y_end + 5
     for index, row in data_frame.iterrows():
-        id, symbol, price_change = row['id'], row['symbol'], row[percentage_change_key]
-        change_color = gain_color if price_change >= 0 else loss_color
-        draw.text((x_offset_id, y_offset), id, font=font, fill=text_color)
-        draw.text((x_offset_symbol, y_offset), symbol.upper(), font=font, fill=text_color)
-        draw.text((x_offset_change, y_offset), f"{price_change:.2f}%", font=font, fill=change_color)
-        y_offset += 20
+        token_name = ' '.join(word.capitalize() for word in row['id'].replace('-', ' ').split())
+        symbol_text = row['symbol'].upper()
+        price_change_text = f"{row[percentage_change_key]:.2f}%"
+        
+        draw.text((column_details["Token"]["x_offset"], y_offset), token_name, fill=TEXT_COLOR, font=font)
+        draw.text((column_details["Symbol"]["x_offset"], y_offset), symbol_text, fill=TEXT_COLOR, font=font)
+        draw.text(
+            (column_details["Price Change %"]["x_offset"], y_offset),
+            price_change_text,
+            fill=TEXT_COLOR,  # Set text color to black
+            font=font
+        )
+        y_offset += row_height
 
     # Save the image
     image.save(file_name)
@@ -91,7 +108,7 @@ def main():
     else:
         print("Skipping analysis for 24h due to missing data.\n")
 
-
+# Run the script
 if __name__ == "__main__":
     main()
 
