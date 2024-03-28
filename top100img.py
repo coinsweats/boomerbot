@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 import requests
 import pandas as pd
 
-# Replace 'arial.ttf' with the full path to your font file on your system
+# Arial included in repo here
 FONT_PATH = 'arial.ttf'
 FONT_SIZE = 14
 LINE_COLOR = "#C0C0C0"  # A light shade of gray for monochrome appearance
