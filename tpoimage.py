@@ -1,7 +1,7 @@
 #
-# This creates an image from the mpa.py TPO text file
+# This creates an image from the tpo.py TPO text file
 #
-# TODO - format image a bit better, dates on table or below
+# TODO - format image a bit better
 
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
@@ -14,7 +14,7 @@ with open('tpo_profiles.txt', 'r') as f:
 max_width = max(len(line) for line in lines)
 
 # Assume each character is about 10 pixels wide and 20 pixels tall, adjust as needed
-char_width = 10
+char_width = 13
 char_height = 20
 
 # Create an image with enough width to hold the longest line and height for all lines
@@ -41,8 +41,8 @@ border_size = 2  # Thickness of the border
 border_color = 'black'
 
 # Calculate new image size (original size + border)
-new_image_width = image.width + border_size * 2
-new_image_height = image.height + border_size * 2
+new_image_width = image.width + border_size * 4
+new_image_height = image.height + border_size * 10
 
 # Create a new image with the new size and white background
 new_img = Image.new('RGB', (new_image_width, new_image_height), 'white')
@@ -63,5 +63,8 @@ draw.rectangle(
 # Save the new image with the border
 output_path = 'tpo_image_with_border.png'
 new_img.save(output_path)
+
+output_path
+
 
 output_path
