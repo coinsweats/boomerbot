@@ -17,9 +17,3 @@ python pdf.py
 # Remove PNG and text files
 rm *.png
 rm *.txt
-
-# The path to the file - edit as you please
-FILE_PATH="/Users/work/Desktop/bulletinbot/Bulletin.pdf"
-
-
-
