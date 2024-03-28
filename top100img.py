@@ -86,8 +86,8 @@ def main():
     crypto_df = fetch_top_100_cryptos()
     gainers, losers = find_gainers_losers(crypto_df, "24h")
     if gainers is not None and losers is not None:
-        draw_enhanced_crypto_data("Top 10 Gainers - Last 24h", gainers, "top_gainers_enhanced.png", "price_change_percentage_24h")
-        draw_enhanced_crypto_data("Top 10 Losers - Last 24h", losers, "top_losers_enhanced.png", "price_change_percentage_24h")
+        draw_enhanced_crypto_data("Top 10 Gainers - Last 24h", gainers, "top_gainers.png", "price_change_percentage_24h")
+        draw_enhanced_crypto_data("Top 10 Losers - Last 24h", losers, "top_losers.png", "price_change_percentage_24h")
     else:
         print("Skipping analysis for 24h due to missing data.\n")
 
