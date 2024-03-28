@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# This bash file sends bulletin to local printer - set for windows currently 
 # Delete previous Bulletin
 rm -f Bulletin*.pdf
 
