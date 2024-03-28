@@ -1,4 +1,4 @@
-BoomerBot collects a bunch of handy info and sends it to a printer so that you can save your tired eyes a little bit of screentime in the morning. 
+BoomerBot collects a bunch of handy info and sends it to a printer, saving your tired eyes a bit of screentime. 
 
 make sure to chmod +x bb.sh bbp.sh
 
