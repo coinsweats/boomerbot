@@ -8,12 +8,4 @@ run ./bbp.sh to send to a printer; edit file location & printer command as per y
 
 This has been running on Mac manually, plan is to set up with cron job on raspberry pi
 
-Dependencies required:
-
-mplfinance 
-pandas
-yfinance
-pycoingecko
-matplotlib
-
-install dependencies: pip install mplfinance pandas yfinance pycoingecko matplotlib numpy Pillow fpdf requests
+Dependencies required: pip install mplfinance pandas yfinance pycoingecko matplotlib numpy Pillow fpdf requests
