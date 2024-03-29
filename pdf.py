@@ -62,7 +62,7 @@ pdf.cell(0, 10, 'TPO Chart - 100 ticks', 0, 1, 'L')  # Add the title
 centered_x_position = get_centered_x(190)
 
 # Add 'tpo_image_with_border.png' centered on the page
-pdf.image('tpo_image_with_border.png', x=centered_x_position, y=35, w=180)
+pdf.image('tpo_image.png', x=centered_x_position, y=35, w=200)
 
 # Save the PDF to a file with the current date and time appended
 pdf_output = f'Bulletin.pdf'
