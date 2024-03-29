@@ -107,6 +107,6 @@ def generate_tpo_profiles(data, days, tick_size=10, max_width=10, filename='tpo_
 # Usage
 days = 5
 tick_size = 100
-max_width = 20  # Set the maximum width for the daily TPO sections
+max_width = 28  # Set the maximum width for the daily TPO sections
 btc_data = fetch_btc_data(days)
 generate_tpo_profiles(btc_data, days, tick_size, max_width)
