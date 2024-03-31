@@ -6,6 +6,6 @@ run ./bb.sh for a pdf in current folder
 
 run ./bbp.sh to send to a printer; edit file location & printer command as per your system
 
-This has been running on Mac manually, plan is to set up with cron job on raspberry pi
+To run on rpi, install python3 and dependencies: 
 
-Dependencies required: pip install mplfinance pandas yfinance pycoingecko matplotlib numpy Pillow fpdf requests
+pip3 install mplfinance pandas yfinance pycoingecko matplotlib numpy Pillow fpdf requests
