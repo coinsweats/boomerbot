@@ -22,7 +22,7 @@ image_height = len(lines) * char_height
 image = Image.new('RGB', (image_width, image_height), color='white')
 
 # Use a monospaced font
-font = ImageFont.truetype('CourierNewBold.ttf', 20)
+font = ImageFont.truetype('/home/work/boomerbot/CourierNewBold.ttf', 20)
 
 # Initialize the drawing context
 draw = ImageDraw.Draw(image)
@@ -36,7 +36,7 @@ for line in lines:
     y += char_height  # Move down to draw the next line
 
 # No need to create a larger image with a border, just save the image
-output_path = 'tpo_image.png'
+output_path = '/home/work/boomerbot/tpo_image.png'
 image.save(output_path)
 
 output_path
