@@ -39,16 +39,16 @@ pdf.set_font("Arial", size=10)
 pdf.cell(50, 10, '90-Day Candlestick Charts', 0, 1, 'L')  # Add a title before the first chart
 
 # Add '4chart.png' on the top half of the page
-pdf.image('4chart.png', x=5, y=32, w=190)
+pdf.image('/home/work/boomerbot/4chart.png', x=5, y=32, w=190)
 
 # Calculate the y position for the next images (half the page height plus a small margin)
 y_position = 180  # A4 page height is 297mm
 
 # Add 'top_gainers_enhanced.png' on the bottom left half of the page
-pdf.image('top_gainers.png', x=20, y=y_position, w=105)
+pdf.image('/home/work/boomerbot/top_gainers.png', x=20, y=y_position, w=105)
 
 # Add 'top_losers_enhanced.png' on the bottom right half of the page
-pdf.image('top_losers.png', x=115, y=y_position, w=105)
+pdf.image('/home/work/boomerbot/top_losers.png', x=115, y=y_position, w=105)
 
 # Second Page
 pdf.add_page()
@@ -62,10 +62,10 @@ pdf.cell(0, 10, 'TPO Chart - 100 ticks', 0, 1, 'L')  # Add the title
 centered_x_position = get_centered_x(190)
 
 # Add 'tpo_image_with_border.png' centered on the page
-pdf.image('tpo_image.png', x=centered_x_position, y=35, w=200)
+pdf.image('/home/work/boomerbot/tpo_image.png', x=centered_x_position, y=35, w=200)
 
 # Save the PDF to a file with the current date and time appended
-pdf_output = f'Bulletin.pdf'
+pdf_output = f'/home/work/boomerbot/Bulletin.pdf'
 pdf.output(pdf_output)
 
 print(f'PDF saved: {pdf_output}')
