@@ -63,10 +63,10 @@ def display_charts_on_one_page(image_paths, titles, ncols=2, output_file='4chart
 
 # Generate charts without embedded titles
 image_files = [
-    'BTCUSD_90_day_candlestick.png',
-    'ETHUSD_90_day_candlestick.png',
-    'ETHBTC_90_day_candlestick.png',
-    'SPX_90_day_candlestick.png'
+    '/home/work/boomerbot/BTCUSD_90_day_candlestick.png',
+    '/home/work/boomerbot/ETHUSD_90_day_candlestick.png',
+    '/home/work/boomerbot/ETHBTC_90_day_candlestick.png',
+    '/home/work/boomerbot/SPX_90_day_candlestick.png'
 ]
 
 # Plot and save the individual charts
@@ -78,6 +78,6 @@ plot_chart(get_spx_data(90), image_files[3])
 # Display all charts on one page
 titles = ['BTCUSD', 'ETHUSD', 'ETHBTC', 'SPX']
 display_charts_on_one_page(image_files, titles)
-display_charts_on_one_page(image_files, titles, output_file='4chart.png')
+display_charts_on_one_page(image_files, titles, output_file='/home/work/boomerbot/4chart.png')
 
 
