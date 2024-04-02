@@ -1,5 +1,5 @@
 #
-# This creates two tables top top gainers / losers from coingecko
+# This creates two tables for top gainers / losers from coingecko
 # TODO - format table better, nice lines, better text formatting, borders
 #
 from PIL import Image, ImageDraw, ImageFont
@@ -7,7 +7,7 @@ import requests
 import pandas as pd
 
 # Arial included in repo here
-FONT_PATH = 'arial.ttf'
+FONT_PATH = '/home/work/boomerbot/Arial.ttf'
 FONT_SIZE = 14
 LINE_COLOR = "#C0C0C0"  # A light shade of gray for monochrome appearance
 TEXT_COLOR = "black"    # Set all text to black
@@ -32,9 +32,17 @@ def find_gainers_losers(df, period="24h"):
     if percentage_change_key not in df.columns:
         print(f"Data for {period} is not available.")
         return None, None
-    sorted_df = df.sort_values(by=percentage_change_key, ascending=False)
-    top_gainers = sorted_df.head(10)[["id", "symbol", percentage_change_key]]
-    top_losers = sorted_df.tail(10)[["id", "symbol", percentage_change_key]]
+    
+    # Sort the entire DataFrame by the percentage change key in ascending order first
+    sorted_df = df.sort_values(by=percentage_change_key, ascending=True)
+    
+    # Then, since the DataFrame is sorted in ascending order, the top losers will be the first 10
+    top_losers = sorted_df.head(10)[["id", "symbol", percentage_change_key]]
+    
+    # And the top gainers can be obtained by taking the last 10 entries and reversing them
+    # to make sure the one with the highest gain is on top
+    top_gainers = sorted_df.tail(10)[["id", "symbol", percentage_change_key]].iloc[::-1]
+    
     return top_gainers, top_losers
 
 def draw_enhanced_crypto_data(title, data_frame, file_name, percentage_change_key):
@@ -103,8 +111,8 @@ def main():
     crypto_df = fetch_top_100_cryptos()
     gainers, losers = find_gainers_losers(crypto_df, "24h")
     if gainers is not None and losers is not None:
-        draw_enhanced_crypto_data("Top 10 Gainers - Last 24h", gainers, "top_gainers.png", "price_change_percentage_24h")
-        draw_enhanced_crypto_data("Top 10 Losers - Last 24h", losers, "top_losers.png", "price_change_percentage_24h")
+        draw_enhanced_crypto_data("Top 10 Gainers - Last 24h", gainers, "/home/work/boomerbot/top_gainers.png", "price_change_percentage_24h")
+        draw_enhanced_crypto_data("Top 10 Losers - Last 24h", losers, "/home/work/boomerbot/top_losers.png", "price_change_percentage_24h")
     else:
         print("Skipping analysis for 24h due to missing data.\n")
 
